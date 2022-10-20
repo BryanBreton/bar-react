@@ -14,18 +14,18 @@
 
 import React, { useState } from "react";
 import { drinks } from "../functions/store";
+import { styleButtonOrder } from "../functions/varCss";
 const Modal = () => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
             <button
-                className="bg-blue-200 text-black active:bg-blue-500 
-      font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                className={styleButtonOrder()}
                 type="button"
                 onClick={() => setShowModal(true)}
             >
-                Fill Details
+                Prendre la commande
             </button>
             {showModal ? (
                 <>
@@ -74,20 +74,21 @@ const Modal = () => {
 };
 
 function renderCocktailList() {
-    
+
     return (
         drinks.map(d => {
             return (
-            <div className="grid grid-cols-8 py-3">
-            <label className="block text-black text-sm font-bold mb-1 col-span-6 pt-2">
-                {d.name}
-            </label>
-            <input type="number" className="shadow appearance-none border rounded w-full py-1 px-1 text-black" />
-            <label className="block text-black text-sm font-bold mb-1 col-span-1 pl-5 pt-2">
-                {d.price} €
-            </label>
-        </div>
-        )})
+                <div key={d.name} className="grid grid-cols-8 py-3">
+                    <label className="block text-black text-sm font-bold mb-1 col-span-6 pt-2">
+                        {d.name}
+                    </label>
+                    <input type="number" className="shadow appearance-none border rounded w-full py-1 px-1 text-black" />
+                    <label className="block text-black text-sm font-bold mb-1 col-span-1 pl-5 pt-2">
+                        {d.price} €
+                    </label>
+                </div>
+            )
+        })
     )
 }
 
